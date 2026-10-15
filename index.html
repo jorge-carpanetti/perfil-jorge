@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jorge Carpanetti — Meridiano Austral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1C2D42;--ochre:#A08C5C;--white:#fff;--muted:#8A94A6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--white);font-family:'Inter',system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:24px 16px 48px;background-image:radial-gradient(1000px 500px at 50% -10%,#2A405E 0%,#1C2D42 55%,#121E30 100%)}
+.card{width:100%;max-width:420px;text-align:center}
+.logo{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid var(--ochre);background:#fff;padding:6px;margin:12px auto 16px;display:block}
+h1{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.02em}
+.role{color:var(--ochre);font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-top:8px}
+.tag{color:#CBD5E1;font-size:14.5px;line-height:1.55;margin:14px auto 6px;max-width:34ch}
+.values{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 20px}
+.values span{font-size:11.5px;letter-spacing:.06em;border:1px solid rgba(160,140,92,.55);color:#E7DFC8;border-radius:100px;padding:6px 11px}
+.links{display:grid;gap:12px;margin-top:6px}
+a.btn{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;border-radius:14px;padding:15px 16px;transition:transform .12s ease,filter .12s ease}
+a.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.btn-primary{background:var(--ochre);color:#1C2D42}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.btn-white{background:#fff;color:#1C2D42}
+.qr{margin:22px auto 0;background:#fff;border-radius:16px;padding:14px;width:200px;max-width:100%}
+.qr img{width:100%;display:block;border-radius:8px}
+.qr p{color:#1C2D42;font-size:11px;font-weight:600;margin:8px 0 0;font-family:'Montserrat',sans-serif;line-height:1.4;word-break:break-all;overflow-wrap:anywhere;text-align:center;max-width:100%}
+footer{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.6}
+footer strong{color:#CBD5E1}
+</style>
+</head>
+<body>
+<main class="card">
+<img class="logo" src="./assets/Logo_oficial_v1.jpg" alt="Meridiano Austral">
+<h1>Jorge Carpanetti</h1>
+<div class="role">Co-Founder / CTO · Punta Arenas</div>
+<div style="color:#CBD5E1;font-size:13px;margin-top:6px;font-family:'Montserrat',sans-serif;font-weight:600">Ingeniero en Recursos Energéticos</div>
+<p class="tag">Precision Supply Chains for Patagonia's Energy Transition.</p>
+<div class="values"><span>Stewardship</span><span>Precision &amp; Integrity</span><span>Innovation</span></div>
+<div class="links">
+<a class="btn btn-primary" href="https://meridianoaustral.cl">🌐 Sitio web</a>
+<a class="btn btn-ghost" href="mailto:jorge.carpanetti@meridianoaustral.cl">✉️ jorge.carpanetti@meridianoaustral.cl</a>
+<a class="btn btn-ghost" href="https://wa.me/56949102807?text=Hola%20Jorge%2C%20te%20contacto%20v%C3%ADa%20Meridiano%20Austral" target="_blank" rel="noopener">💬 +56 9 4910 2807</a>
+<a class="btn btn-white" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AJorge%20Carpanetti%0AORG%3AMeridiano%20Austral%0ATITLE%3ACo-Founder%20%2F%20CTO%0ATEL%3BTYPE%3DCELL%3A%2B56949102807%0AURL%3Ahttps%3A%2F%2Fjorgecarpanetti.meridianoaustral.cl%0AEMAIL%3Ajorge.carpanetti%40meridianoaustral.cl%0AEND%3AVCARD" download="jorge-carpanetti.vcf">＋ Guardar contacto</a>
+</div>
+<div class="qr"><img src="./assets/qr-jorgecarpanetti.png" alt="QR Jorge Carpanetti"></div>
+<footer><strong>Meridiano Austral</strong><br>Logística · Plataformas digitales · Ingeniería<br>Punta Arenas, Patagonia</footer>
+</main>
+</body>
+</html>
