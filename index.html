@@ -23,6 +23,8 @@ a.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
 .btn-primary{background:var(--ochre);color:#1C2D42}
 .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.22)}
 .btn-white{background:#fff;color:#1C2D42}
+.lang-toggle{position:fixed;top:14px;right:14px;z-index:10;background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--ochre);font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;border-radius:100px;padding:8px 16px;cursor:pointer}
+.lang-toggle:hover{background:rgba(160,140,92,.25)}
 .qr{margin:22px auto 0;background:#fff;border-radius:16px;padding:14px;width:200px;max-width:100%}
 .qr img{width:100%;display:block;border-radius:8px}
 .qr p{color:#1C2D42;font-size:11px;font-weight:600;margin:8px 0 0;font-family:'Montserrat',sans-serif;line-height:1.4;word-break:break-all;overflow-wrap:anywhere;text-align:center;max-width:100%}
@@ -31,21 +33,52 @@ footer strong{color:#CBD5E1}
 </style>
 </head>
 <body>
+<button id="langToggle" class="lang-toggle" aria-label="Cambiar idioma / Switch language">EN</button>
 <main class="card">
 <img class="logo" src="./assets/Logo_oficial_v1.jpg" alt="Meridiano Austral">
 <h1>Jorge Carpanetti</h1>
 <div class="role">Co-Founder / CTO · Punta Arenas</div>
-<div style="color:#CBD5E1;font-size:13px;margin-top:6px;font-family:'Montserrat',sans-serif;font-weight:600">Ingeniero en Recursos Energéticos</div>
+<div style="color:#CBD5E1;font-size:13px;margin-top:6px;font-family:'Montserrat',sans-serif;font-weight:600" data-i18n="degree">Ingeniero en Recursos Energéticos</div>
 <p class="tag">Precision Supply Chains for Patagonia's Energy Transition.</p>
 <div class="values"><span>Stewardship</span><span>Precision &amp; Integrity</span><span>Innovation</span></div>
 <div class="links">
-<a class="btn btn-primary" href="https://meridianoaustral.cl">🌐 Sitio web</a>
+<a class="btn btn-primary" href="https://meridianoaustral.cl" data-i18n="website">🌐 Sitio web</a>
 <a class="btn btn-ghost" href="mailto:jorge.carpanetti@meridianoaustral.cl">✉️ jorge.carpanetti@meridianoaustral.cl</a>
-<a class="btn btn-ghost" href="https://wa.me/56949102807?text=Hola%20Jorge%2C%20te%20contacto%20v%C3%ADa%20Meridiano%20Austral" target="_blank" rel="noopener">💬 +56 9 4910 2807</a>
-<a class="btn btn-white" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AJorge%20Carpanetti%0AORG%3AMeridiano%20Austral%0ATITLE%3ACo-Founder%20%2F%20CTO%0ATEL%3BTYPE%3DCELL%3A%2B56949102807%0AURL%3Ahttps%3A%2F%2Fjorgecarpanetti.meridianoaustral.cl%0AEMAIL%3Ajorge.carpanetti%40meridianoaustral.cl%0AEND%3AVCARD" download="jorge-carpanetti.vcf">＋ Guardar contacto</a>
+<a class="btn btn-ghost" href="https://wa.me/56949102807?text=Hola%20Jorge%2C%20te%20contacto%20v%C3%ADa%20Meridiano%20Austral" target="_blank" rel="noopener" data-wa-number="56949102807" data-wa-es="Hola Jorge, te contacto vía Meridiano Austral" data-wa-en="Hi Jorge, contacting you via Meridiano Austral">💬 +56 9 4910 2807</a>
+<a class="btn btn-white" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AJorge%20Carpanetti%0AORG%3AMeridiano%20Austral%0ATITLE%3ACo-Founder%20%2F%20CTO%0ATEL%3BTYPE%3DCELL%3A%2B56949102807%0AURL%3Ahttps%3A%2F%2Fjorgecarpanetti.meridianoaustral.cl%0AEMAIL%3Ajorge.carpanetti%40meridianoaustral.cl%0AEND%3AVCARD" download="jorge-carpanetti.vcf" data-i18n="save">＋ Guardar contacto</a>
 </div>
 <div class="qr"><img src="./assets/qr-jorgecarpanetti.png" alt="QR Jorge Carpanetti"></div>
-<footer><strong>Meridiano Austral</strong><br>Logística · Plataformas digitales · Ingeniería<br>Punta Arenas, Patagonia</footer>
+<footer><strong>Meridiano Austral</strong><br><span data-i18n="footerServices">Logística · Plataformas digitales · Ingeniería</span><br>Punta Arenas, Patagonia</footer>
 </main>
+<script>
+(function(){
+  var STR={
+    es:{toggle:"EN",degree:"Ingeniero en Recursos Energéticos",website:"🌐 Sitio web",save:"＋ Guardar contacto",footerServices:"Logística · Plataformas digitales · Ingeniería"},
+    en:{toggle:"ES",degree:"Energy Resources Engineer",website:"🌐 Website",save:"＋ Save contact",footerServices:"Logistics · Digital Platforms · Engineering"}
+  };
+  var btn=document.getElementById("langToggle");
+  var wa=document.querySelector("[data-wa-number]");
+  function apply(lang){
+    document.documentElement.lang=lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k=el.getAttribute("data-i18n");
+      if(STR[lang][k])el.textContent=STR[lang][k];
+    });
+    if(wa){
+      var msg=wa.getAttribute("data-wa-"+lang)||wa.getAttribute("data-wa-es");
+      wa.href="https://wa.me/"+wa.getAttribute("data-wa-number")+"?text="+encodeURIComponent(msg);
+    }
+    btn.textContent=STR[lang].toggle;
+    try{localStorage.setItem("ma-lang",lang);}catch(e){}
+  }
+  var initial="es";
+  try{initial=localStorage.getItem("ma-lang")||"es";}catch(e){}
+  if(initial!=="es"&&initial!=="en")initial="es";
+  btn.addEventListener("click",function(){
+    apply(document.documentElement.lang==="es"?"en":"es");
+  });
+  apply(initial);
+})();
+</script>
 </body>
 </html>
